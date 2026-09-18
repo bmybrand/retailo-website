@@ -1,0 +1,15 @@
+.panel {
+  height: 800px;
+}
+
+@media (min-width: 1024px) {
+  .panel {
+    height: 540px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .panel {
+    height: max(500px, 31.5vw);
+  }
+}
