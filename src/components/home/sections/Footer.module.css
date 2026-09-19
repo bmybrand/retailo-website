@@ -1,0 +1,143 @@
+.footer {
+  min-height: 100svh;
+  scroll-margin-top: 72px;
+  background: #fff;
+  color: #0b5c48;
+}
+
+.inner {
+  display: flex;
+  width: min(100% - 80px, 1320px);
+  min-height: 100svh;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding-top: clamp(64px, 7svh, 96px);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.8fr) minmax(0, 4fr);
+  gap: clamp(40px, 4vw, 64px);
+}
+
+.brandColumn { min-width: 0; }
+
+.logoLink { display: inline-flex; align-items: center; }
+.logoLink img { display: block; width: 124px; height: auto; }
+
+.accountActions {
+  display: flex;
+  width: 212px;
+  flex-direction: column;
+  gap: 11px;
+  margin-top: 30px;
+}
+
+.createAccount,
+.login {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 20px;
+  border-radius: 999px;
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.createAccount { background: #0b5c48; color: #fff; }
+.login { border: 1px solid #0b5c48; color: #0b5c48; }
+
+.socials {
+  display: flex;
+  gap: 11px;
+  margin-top: 22px;
+}
+
+.socials > span {
+  display: flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background: #f8f8f6;
+  cursor: pointer;
+  transition: background-color 180ms ease;
+}
+
+.socials img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 18px;
+  max-height: 18px;
+  transition: filter 180ms ease;
+}
+
+.socials > span:hover { background: #0b5c48; }
+.socials > span:hover img { filter: invert(1); }
+
+.navigation {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(20px, 2.2vw, 34px);
+  padding-top: 106px;
+}
+
+.linkColumn { display: flex; min-width: 0; flex-direction: column; gap: 32px; }
+.linkColumn:last-child { position: relative; }
+.linkGroup h3 { margin: 0 0 14px; font-family: var(--font-manrope), Arial, sans-serif; font-size: 20px; font-weight: 700; line-height: 1.3; }
+.linkGroup ul { display: flex; flex-direction: column; gap: 9px; margin: 0; padding: 0; list-style: none; }
+.linkGroup li { min-width: 0; color: #72787a; font-family: var(--font-inter), Arial, sans-serif; font-size: 16px; line-height: 1.4; }
+.linkGroup a { color: inherit; text-decoration: none; transition: color 180ms ease; }
+.linkGroup a:hover { color: #0b5c48; }
+.linkGroup a:focus-visible { border-radius: 2px; outline: 2px solid #0b5c48; outline-offset: 3px; }
+
+.myBrand {
+  position: absolute;
+  top: -106px;
+  left: 0;
+}
+
+.myBrand img { display: block; width: min(216px, 100%); height: auto; }
+
+.bottom { width: 100%; margin-top: 48px; text-align: center; }
+.wordmark { display: block; width: min(100%, 1100px); height: auto; margin: 0 auto; }
+.bottom p { margin: 9px 0 0; padding: 13px 0 17px; border-top: 1px solid #f0f0ee; color: #565b59; font-family: var(--font-inter), Arial, sans-serif; font-size: 13px; line-height: 1.4; }
+
+@media (max-width: 1100px) {
+  .inner { width: min(100% - 48px, 1040px); }
+  .top { grid-template-columns: 1fr; gap: 42px; }
+  .brandColumn { display: grid; grid-template-columns: auto 1fr; column-gap: 30px; align-items: start; }
+  .accountActions { grid-row: 2; margin-top: 20px; }
+  .socials { grid-column: 2; grid-row: 2; align-self: start; }
+  .navigation { padding-top: 0; }
+  .myBrand { position: static; }
+}
+
+@media (max-width: 900px) {
+  .navigation { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+}
+
+@media (max-width: 600px) {
+  .inner { width: min(100% - 36px, 420px); padding-top: 52px; }
+  .top { gap: 44px; }
+  .brandColumn { display: block; }
+  .logoLink img { width: 124px; }
+  .accountActions { width: min(100%, 240px); margin-top: 22px; }
+  .socials { margin-top: 18px; }
+  .navigation { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+  .linkColumn { gap: 30px; }
+  .myBrand { margin: 0 0 8px; }
+  .bottom { margin-top: 80px; }
+  .bottom p { margin-top: 13px; font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linkGroup a { transition: none; }
+  .socials > span,
+  .socials img { transition: none; }
+}

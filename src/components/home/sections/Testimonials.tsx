@@ -115,10 +115,10 @@ export function Testimonials() {
       {/* Contained top area */}
       <div className="mx-auto w-[92%] lg:w-[80%]">
         <div className="text-center">
-          <p className="font-inter text-[clamp(13px,1.4vw,20px)] sm:text-[20px] font-semibold tracking-wider text-brand uppercase">
+          <p className="font-inter text-base font-medium tracking-normal text-brand uppercase sm:text-lg lg:text-xl">
             Businesses That Trust Us
           </p>
-          <h2 className="mx-auto mt-2 sm:mt-3 max-w-5xl sm:max-w-6xl font-sans text-[clamp(22px,3.5vw,52px)] sm:text-[52px] font-bold leading-tight tracking-tight text-zinc-900">
+          <h2 className="mx-auto mt-1 max-w-5xl font-sans text-[clamp(22px,3.5vw,52px)] font-bold leading-tight tracking-tight text-zinc-900 sm:mt-1.5 sm:max-w-6xl sm:text-[52px] lg:mt-2">
             Trusted By Growing Brands &amp; Businesses
           </h2>
         </div>

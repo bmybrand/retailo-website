@@ -112,10 +112,10 @@ function FeatureCopy({
       <Link
         href={href}
         onClick={onLearnMore}
-        className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#084538]"
+        className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-5 py-2.5 font-sans text-sm font-medium text-white transition hover:bg-[#084538] sm:w-auto sm:px-6 sm:py-3 sm:text-base lg:px-7 lg:py-3.5 lg:text-lg"
       >
         Learn More
-        <ArrowIcon className="h-4 w-4" />
+        <ArrowIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 lg:h-5 lg:w-5" />
       </Link>
     </div>
   );
@@ -140,10 +140,10 @@ export function FeatureStories() {
       <div className="mx-auto w-[92%] lg:w-[80%]">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-end lg:gap-16">
           <div>
-            <p className="font-inter text-[20px] font-semibold tracking-[0.14em] text-brand uppercase">
+            <p className="font-inter text-base font-medium tracking-normal text-brand uppercase sm:text-lg lg:text-xl">
               Your Store, All In One
             </p>
-            <h2 className="mt-3 max-w-xl font-sans text-[32px] font-bold leading-[1.12] tracking-tight text-zinc-900 sm:text-[42px] lg:text-[52px]">
+            <h2 className="mt-1 max-w-xl font-sans text-[32px] font-bold leading-[1.12] tracking-tight text-zinc-900 sm:mt-1.5 sm:text-[42px] lg:mt-2 lg:text-[52px]">
               From Products To
               <br />
               Delivery, All In One
