@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowIcon } from "@/components/home/hero/ArrowIcon";
+import { productLinks } from "@/lib/product-links";
 import styles from "./GrowthShowcase.module.css";
 
 type MediaTile = {
@@ -124,10 +124,10 @@ export function GrowthShowcase() {
             From fashion and beauty to food, wellness, and tech, Retailo helps businesses stay connected.
             Manage products, orders, inventory, payments, and delivery all in one place, so you can focus on growing your business.
           </p>
-          <Link href="/#platform" className={styles.primaryButton}>
+          <a href={productLinks.register} className={styles.primaryButton}>
             Run Your Business With Retailo
             <ArrowIcon className={styles.buttonArrow} />
-          </Link>
+          </a>
         </div>
       </div>
 

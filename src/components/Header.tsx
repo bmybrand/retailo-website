@@ -1,18 +1,17 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 import { ArrowIcon } from "@/components/home/hero/ArrowIcon";
 import { Logo } from "@/components/Logo";
+import { productLinks } from "@/lib/product-links";
 
 const links = [
   { href: "/#home", label: "Home" },
-  { href: "/#platform", label: "Platform" },
-  { href: "/#solutions", label: "Features" },
-  { href: "/#integrations", label: "Integrations" },
-  { href: "/#pricing", label: "Pricing" },
-  { href: "/#resources", label: "Resources" },
+  { href: "/platform", label: "Platform" },
+  { href: "/features", label: "Features" },
+  { href: "/integrations", label: "Integrations" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/resources", label: "Resources" },
 ];
 
 export function Header() {
@@ -70,20 +69,20 @@ export function Header() {
           <Logo />
           <nav className="hidden items-center gap-8 font-inter text-base text-zinc-800 lg:flex">
             {links.map((link) => (
-              <Link key={link.href} href={link.href} className="group">
+              <a key={link.href} href={link.href} className="group">
                 <NavMark>{link.label}</NavMark>
-              </Link>
+              </a>
             ))}
           </nav>
           <div className="flex items-center gap-3">
             <div className="hidden items-center gap-3 lg:flex">
-              <Button
-                variant="outline"
-                className="border-brand bg-transparent px-5 py-2 font-medium text-brand hover:border-brand hover:bg-brand/5"
+              <a
+                href={productLinks.signIn}
+                className="inline-flex items-center justify-center rounded-full border border-brand bg-transparent px-5 py-2 text-sm font-medium text-brand transition hover:bg-brand/5"
               >
                 Sign In
-              </Button>
-              <Button className="px-5 py-2 font-medium shadow-none">Get Started</Button>
+              </a>
+              <a href={productLinks.register} className="inline-flex items-center justify-center rounded-full bg-brand px-5 py-2 text-sm font-medium text-white transition hover:bg-[#084538]">Get Started</a>
             </div>
             <button
               type="button"
@@ -123,7 +122,7 @@ export function Header() {
             >
               <nav className="flex flex-col font-inter text-[15px] text-zinc-800">
                 {links.map((link) => (
-                  <Link
+                  <a
                     key={link.href}
                     href={link.href}
                     className="group flex items-center justify-between rounded-xl px-4 py-3 transition"
@@ -131,17 +130,18 @@ export function Header() {
                   >
                     <NavMark>{link.label}</NavMark>
                     <ArrowIcon className="h-4 w-4 text-zinc-400 transition group-hover:text-zinc-700" />
-                  </Link>
+                  </a>
                 ))}
               </nav>
               <div className="mt-2 grid grid-cols-2 gap-2 border-t border-zinc-100 px-1 pt-3 pb-1">
-                <Button
-                  variant="outline"
-                  className="border-brand bg-transparent font-medium text-brand hover:border-brand hover:bg-brand/5"
+                <a
+                  href={productLinks.signIn}
+                  className="inline-flex items-center justify-center rounded-full border border-brand bg-transparent px-4 py-2.5 text-sm font-medium text-brand transition hover:bg-brand/5"
+                  onClick={closeMenu}
                 >
                   Sign In
-                </Button>
-                <Button className="font-medium shadow-none">Get Started</Button>
+                </a>
+                <a href={productLinks.register} className="inline-flex items-center justify-center rounded-full bg-brand px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[#084538]" onClick={closeMenu}>Get Started</a>
               </div>
             </div>
           </div>

@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowIcon } from "@/components/home/hero/ArrowIcon";
 import styles from "./SuccessStories.module.css";
 
 type Story = {
+  slug: string;
   brand: string;
   logo: string;
   person: string;
@@ -22,6 +24,7 @@ type Story = {
 
 const stories: Story[] = [
   {
+    slug: "jiggy-jerky",
     brand: "Jiggy Jerky",
     logo: "/jiggy-jerky-wordmark.svg",
     person: "Mark Vicary",
@@ -38,6 +41,7 @@ const stories: Story[] = [
     ],
   },
   {
+    slug: "racknificent",
     brand: "Racknificent",
     logo: "/racknificent-logo.svg",
     person: "Marcus Vance",
@@ -49,6 +53,7 @@ const stories: Story[] = [
     highlights: ["Orders", "Inventory", "One View"],
   },
   {
+    slug: "elevate",
     brand: "Elevate",
     logo: "/elevate-logo.svg",
     person: "Emma Richardson",
@@ -60,6 +65,7 @@ const stories: Story[] = [
     highlights: ["Visibility", "Stores", "Growth"],
   },
   {
+    slug: "keisha-sharay",
     brand: "Keisha Sharay",
     logo: "/keisha-sharay-logo.svg",
     person: "Keisha Sharay",
@@ -71,6 +77,7 @@ const stories: Story[] = [
     highlights: ["Storefront", "Products", "Orders"],
   },
   {
+    slug: "sheys-laser-esthetics",
     brand: "She's Laser & Esthetics",
     logo: "/shes-laser-esthetics-logo.svg",
     person: "Sarah Mitchell",
@@ -82,6 +89,7 @@ const stories: Story[] = [
     highlights: ["Store", "Customers", "Orders"],
   },
   {
+    slug: "parable-skate-co",
     brand: "Parable Skate Co.",
     logo: "/parable-logo.svg",
     person: "James Wilson",
@@ -186,7 +194,6 @@ function StoryCard({ story, onOpen, preview = false }: { story: Story; onOpen?: 
 export function SuccessStories() {
   const [activeBrandIndex, setActiveBrandIndex] = useState(0);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
-  const [showAll, setShowAll] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -320,9 +327,9 @@ export function SuccessStories() {
           </div>
           <div className={styles.introRight}>
             <p>From independent shops to growing brands, businesses use our platform to manage their entire store, simplify operations, and deliver a better customer experience.</p>
-            <button type="button" className={styles.allButton} aria-expanded={showAll} onClick={() => setShowAll((value) => !value)}>
-              {showAll ? "Hide Success Stories" : "View All Success Stories"} <ArrowIcon />
-            </button>
+            <Link href="/case-studies" className={styles.allButton}>
+              View All Success Stories <ArrowIcon />
+            </Link>
           </div>
         </div>
         <div className={styles.brandNav} role="group" aria-label="Choose a business story">
@@ -359,38 +366,38 @@ export function SuccessStories() {
         <button type="button" aria-label={`Next ${currentBrand.brand} card`} onClick={() => moveCard(1)}><Arrow /></button>
       </div>
 
-      {showAll && (
-        <div className={styles.allStories}>
-          {cardsByBrand.flatMap((cards, brandIndex) => cards.map((card, cardIndex) => (
-            <button
-              type="button"
-              key={`${card.brand}-${cardIndex}`}
-              onClick={() => {
-                setActiveBrandIndex(brandIndex);
-                setActiveCardIndex(cardIndex);
-                carouselRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-              }}
-            >
-              <Image src={card.logo} alt="" width={120} height={42} />
-              <span>{card.quote}</span>
-              <strong>View card {cardIndex + 1} <Arrow /></strong>
-            </button>
-          )))}
-        </div>
-      )}
-
-      <dialog ref={dialogRef} className={styles.dialog} aria-label={`${current.brand} case study`}>
-        <button type="button" className={styles.dialogClose} aria-label="Close case study" onClick={() => dialogRef.current?.close()}>×</button>
-        <Image src={current.logo} alt={current.brand} width={170} height={60} className={styles.dialogLogo} />
-        <h3>{current.tagline}</h3>
-        <p>{current.quote}</p>
-        <strong>{current.person}</strong>
-        <span>{current.role}</span>
-        {current.stats && (
-          <div className={styles.dialogStats}>
-            {current.stats.map((stat) => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
+      <dialog
+        ref={dialogRef}
+        className={styles.dialog}
+        aria-labelledby="case-study-preview-title"
+        onClick={(event) => {
+          if (event.target === event.currentTarget) dialogRef.current?.close();
+        }}
+      >
+        <div className={styles.dialogShell}>
+          <button type="button" className={styles.dialogClose} aria-label="Close case study" onClick={() => dialogRef.current?.close()}>×</button>
+          <div className={styles.dialogMedia}>
+            <Image src={current.image} alt={current.imageAlt} fill sizes="(max-width: 700px) 92vw, 360px" className={current.imageFit === "contain" ? styles.dialogDashboard : undefined} />
           </div>
-        )}
+          <div className={styles.dialogCopy}>
+            <Image src={current.logo} alt={current.brand} width={170} height={60} className={styles.dialogLogo} />
+            <p className={styles.dialogEyebrow}>Customer story</p>
+            <h3 id="case-study-preview-title">{current.tagline}</h3>
+            <p className={styles.dialogQuote}>{current.quote}</p>
+            <div className={styles.dialogPerson}>
+              <strong>{current.person}</strong>
+              <span>{current.role}</span>
+            </div>
+            {current.stats && (
+              <div className={styles.dialogStats}>
+                {current.stats.map((stat) => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
+              </div>
+            )}
+            <Link href={`/case-studies/${current.slug}`} className={styles.dialogCta} onClick={() => dialogRef.current?.close()}>
+              Read Full Case Study <ArrowIcon />
+            </Link>
+          </div>
+        </div>
       </dialog>
     </section>
   );

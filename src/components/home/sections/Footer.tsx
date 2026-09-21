@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { productLinks } from "@/lib/product-links";
 import styles from "./Footer.module.css";
 
 type FooterLink = { label: string; href?: string };
@@ -21,11 +22,11 @@ const columns: FooterGroup[][] = [
     {
       title: "Manage Business",
       links: [
-        { label: "Stores & Locations", href: "/#solutions" },
-        { label: "Discounts" },
-        { label: "Taxes & Promotions" },
-        { label: "Security" },
-        { label: "Notifications" },
+        { label: "Stores & Locations", href: productLinks.stores },
+        { label: "Discounts", href: productLinks.discounts },
+        { label: "Taxes & Promotions", href: productLinks.taxes },
+        { label: "Security", href: productLinks.security },
+        { label: "Notifications", href: productLinks.notifications },
       ],
     },
   ],
@@ -44,11 +45,11 @@ const columns: FooterGroup[][] = [
     {
       title: "Resources",
       links: [
-        { label: "Help Center" },
-        { label: "Documentation" },
-        { label: "Blog" },
-        { label: "Case Studies", href: "/#resources" },
-        { label: "Contact Us" },
+        { label: "Help Center", href: "/resources" },
+        { label: "Documentation", href: "/resources" },
+        { label: "Blog", href: "/resources" },
+        { label: "Case Studies", href: "/case-studies" },
+        { label: "Contact Us", href: "/contact" },
       ],
     },
   ],
@@ -57,18 +58,18 @@ const columns: FooterGroup[][] = [
       title: "Connect",
       links: [
         { label: "Website", href: "/features/website" },
-        { label: "WordPress" },
-        { label: "WooCommerce" },
-        { label: "Integrations", href: "/#integrations" },
+        { label: "WordPress", href: "/integrations" },
+        { label: "WooCommerce", href: "/integrations" },
+        { label: "Integrations", href: "/integrations" },
       ],
     },
     {
       title: "Company",
       links: [
-        { label: "About Retailo", href: "/#about" },
-        { label: "Our Partners" },
-        { label: "Contact" },
-        { label: "Careers" },
+        { label: "About Retailo", href: "/about" },
+        { label: "Our Partners", href: "/integrations" },
+        { label: "Contact", href: "/contact" },
+        { label: "Careers", href: "/about#careers" },
       ],
     },
   ],
@@ -87,11 +88,11 @@ const columns: FooterGroup[][] = [
     {
       title: "Useful Guides",
       links: [
-        { label: "Getting Started" },
-        { label: "Managing Products" },
-        { label: "Managing Orders" },
-        { label: "Connecting Your Store" },
-        { label: "Grow Your Business" },
+        { label: "Getting Started", href: "/resources" },
+        { label: "Managing Products", href: "/resources" },
+        { label: "Managing Orders", href: "/resources" },
+        { label: "Connecting Your Store", href: "/resources" },
+        { label: "Grow Your Business", href: "/resources" },
       ],
     },
   ],
@@ -104,7 +105,7 @@ function LinkGroup({ group }: { group: FooterGroup }) {
       <ul>
         {group.links.map(({ label, href }) => (
           <li key={label}>
-            {href ? <Link href={href}>{label}</Link> : <span>{label}</span>}
+            {href?.startsWith("http") ? <a href={href}>{label}</a> : href ? <Link href={href}>{label}</Link> : <span>{label}</span>}
           </li>
         ))}
       </ul>
@@ -122,8 +123,8 @@ export function Footer() {
               <Image src="/retailo-logo.svg" alt="retailo" width={137} height={39} />
             </Link>
             <div className={styles.accountActions} aria-label="Account options">
-              <span className={styles.createAccount}>Create Free Account</span>
-              <span className={styles.login}>Login</span>
+              <a href={productLinks.register} className={styles.createAccount}>Create Free Account</a>
+              <a href={productLinks.signIn} className={styles.login}>Login</a>
             </div>
             <div className={styles.socials} aria-hidden="true">
               <span className={styles.facebook}><Image src="/Vector.svg" alt="" width={8} height={16} /></span>

@@ -1,0 +1,50 @@
+.hero { padding: clamp(78px, 9vw, 140px) 0 clamp(72px, 8vw, 120px); background: #f8f8f6; text-align: center; }
+.heroInner, .stories { width: 80%; max-width: 1440px; margin-inline: auto; }
+.eyebrow, .label { margin: 0 0 10px; color: #0b5c48; font-family: var(--font-inter), Arial, sans-serif; font-size: 17px; font-weight: 600; text-transform: uppercase; }
+.hero h1 { max-width: 920px; margin: 0 auto; color: #202426; font-family: var(--font-manrope), Arial, sans-serif; font-size: clamp(48px, 6vw, 86px); font-weight: 700; letter-spacing: -.045em; line-height: 1.02; }
+.intro { max-width: 690px; margin: 26px auto 0; color: #68706c; font-family: var(--font-inter), Arial, sans-serif; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.75; }
+.stories { padding: clamp(80px, 10vw, 150px) 0; }
+.story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; gap: clamp(45px, 7vw, 110px); padding: clamp(42px, 5vw, 72px); border-radius: 30px; background: #f8f8f6; }
+.story + .story { margin-top: clamp(32px, 4vw, 58px); }
+.story:nth-child(even) .media { order: 2; }
+.media { position: relative; min-height: clamp(520px, 46vw, 660px); overflow: hidden; border-radius: 22px; background: #e2e8e4; }
+.media img { object-fit: cover; object-position: center; transition: transform 600ms cubic-bezier(.2,.8,.2,1); }
+.story:hover .media img { transform: scale(1.025); }
+.copy { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; justify-content: center; padding: 18px 0; }
+.logo { width: min(180px, 48%); height: 58px; margin-bottom: 28px; object-fit: contain; object-position: left center; }
+.label { margin-bottom: 8px; font-size: 14px; }
+.copy h2 { max-width: 590px; margin: 0; color: #202426; font-family: var(--font-manrope), Arial, sans-serif; font-size: clamp(34px, 3.8vw, 55px); font-weight: 700; letter-spacing: -.035em; line-height: 1.08; }
+.summary { margin: 20px 0 0; color: #68706c; font-family: var(--font-inter), Arial, sans-serif; font-size: 16px; line-height: 1.7; }
+.copy blockquote { margin: 20px 0 0; color: #303633; font-family: var(--font-manrope), Arial, sans-serif; font-size: clamp(17px, 1.5vw, 21px); font-weight: 500; line-height: 1.5; }
+.person { display: flex; flex-direction: column; gap: 3px; margin-top: 20px; font-family: var(--font-inter), Arial, sans-serif; }
+.person strong { color: #0b5c48; font-size: 14px; }
+.person span { color: #737976; font-size: 12px; }
+.stats { display: grid; width: 100%; grid-template-columns: repeat(3, 1fr); margin-top: 28px; padding: 22px 0; border-top: 1px solid #dfe4e1; border-bottom: 1px solid #dfe4e1; }
+.stats div { display: flex; min-width: 0; flex-direction: column; gap: 4px; }
+.stats div + div { padding-left: 16px; border-left: 1px solid #dfe4e1; }
+.stats strong { color: #202426; font-family: var(--font-manrope), Arial, sans-serif; font-size: clamp(22px, 2.2vw, 32px); line-height: 1; }
+.stats span { margin-top: 3px; color: #737976; font-family: var(--font-inter), Arial, sans-serif; font-size: 10px; line-height: 1.25; }
+.button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 11px; margin-top: 28px; padding: 0 23px; border-radius: 999px; background: #0b5c48; color: #fff; font-family: var(--font-manrope), Arial, sans-serif; font-size: 15px; font-weight: 600; transition: background-color 180ms ease; }
+.button:hover { background: #084538; }
+.button svg { width: 17px; }
+
+@media (max-width: 900px) {
+  .heroInner, .stories { width: 92%; }
+  .story { grid-template-columns: 1fr; padding: 24px; }
+  .story:nth-child(even) .media { order: 0; }
+  .media { min-height: 560px; }
+  .copy { padding: 16px 4px 10px; }
+}
+
+@media (max-width: 560px) {
+  .hero { padding-top: 62px; }
+  .hero h1 { font-size: clamp(42px, 13vw, 58px); }
+  .story { gap: 28px; border-radius: 22px; }
+  .media { min-height: 420px; border-radius: 16px; }
+  .copy h2 { font-size: 34px; }
+  .stats span { font-size: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media img { transition: none; }
+}

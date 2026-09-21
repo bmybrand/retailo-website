@@ -2,9 +2,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
-import { Logo } from "@/components/Logo";
 import { ArrowIcon } from "@/components/home/hero/ArrowIcon";
+import { Footer } from "@/components/home/sections/Footer";
 import { features, type Feature } from "@/lib/features";
+import { productLinks } from "@/lib/product-links";
 const styles = {
   root: "fd-root",
   hero: "fd-hero",
@@ -52,13 +53,19 @@ const styles = {
   closingRow: "fd-closingRow",
   closingTitle: "fd-closingTitle",
   closingLink: "fd-closingLink",
-  footer: "fd-footer",
-  footerText: "fd-footerText",
 } as const;
 
 export function FeatureDetailPage({ feature }: { feature: Feature }) {
   const currentIndex = features.findIndex((item) => item.id === feature.id);
   const related = [1, 2, 3].map((offset) => features[(currentIndex + offset) % features.length]);
+  const productDestination = {
+    products: productLinks.products,
+    orders: productLinks.orders,
+    customers: productLinks.customers,
+    website: productLinks.website,
+    payments: productLinks.payments,
+    delivery: productLinks.delivery,
+  }[feature.id];
 
   return (
     <div className={styles.root}>
@@ -68,7 +75,7 @@ export function FeatureDetailPage({ feature }: { feature: Feature }) {
         <section className={styles.hero}>
           <div className={styles.container}>
             <nav aria-label="Breadcrumb" className={styles.breadcrumb}>
-              <Link href="/#platform">Platform</Link>
+              <Link href="/platform">Platform</Link>
               <span aria-hidden="true">/</span>
               <span className={styles.breadcrumbCurrent}>{feature.label}</span>
             </nav>
@@ -87,10 +94,10 @@ export function FeatureDetailPage({ feature }: { feature: Feature }) {
                 </h1>
                 <p className={styles.description}>{feature.body}</p>
                 <div className={styles.actions}>
-                  <Link href="/#platform" className={styles.primaryLink}>
-                    Explore Platform <ArrowIcon />
-                  </Link>
-                  <Link href="/#solutions" className={styles.secondaryLink}>
+                  <a href={productDestination} className={styles.primaryLink}>
+                    Open in Retailo <ArrowIcon />
+                  </a>
+                  <Link href="/features" className={styles.secondaryLink}>
                     See all features
                   </Link>
                 </div>
@@ -140,7 +147,7 @@ export function FeatureDetailPage({ feature }: { feature: Feature }) {
                 <p className={styles.sectionEyebrow}>One connected platform</p>
                 <h2 className={styles.relatedTitle}>Explore what works together</h2>
               </div>
-              <Link href="/#platform" className={styles.relatedBack}>
+              <Link href="/features" className={styles.relatedBack}>
                 Back to the platform <ArrowIcon />
               </Link>
             </div>
@@ -166,17 +173,14 @@ export function FeatureDetailPage({ feature }: { feature: Feature }) {
             <p className={styles.closingEyebrow}>Everything in one place</p>
             <div className={styles.closingRow}>
               <h2 className={styles.closingTitle}>See how Retailo brings your store together.</h2>
-              <Link href="/#platform" className={styles.closingLink}>
-                Explore the platform <ArrowIcon />
-              </Link>
+              <a href={productLinks.register} className={styles.closingLink}>
+                Start with Retailo <ArrowIcon />
+              </a>
             </div>
           </div>
-          <footer className={styles.footer}>
-            <Logo />
-            <p className={styles.footerText}>The operating system for modern retail stores.</p>
-          </footer>
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

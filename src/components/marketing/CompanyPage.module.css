@@ -1,0 +1,30 @@
+.root { overflow: clip; background: #f8f8f6; color: #171717; }
+.hero { display: flex; width: min(100% - 48px, 1120px); min-height: 72svh; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; padding: 90px 0; text-align: center; }
+.eyebrow { margin: 0 0 18px; color: #0b5c48; font-family: var(--font-inter), Arial, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.hero h1 { max-width: 1080px; margin: 0; font-family: var(--font-manrope), Arial, sans-serif; font-size: clamp(52px, 6.4vw, 88px); font-weight: 650; letter-spacing: -.058em; line-height: 1.02; }
+.hero > p:last-child { max-width: 730px; margin: 26px 0 0; color: #65686b; font-family: var(--font-inter), Arial, sans-serif; font-size: 19px; line-height: 1.7; }
+.story { display: grid; width: min(100% - 48px, 1320px); grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr); align-items: center; gap: clamp(50px, 7vw, 110px); margin: 0 auto 140px; padding: 38px; border-radius: 34px; background: #fff; }
+.storyVisual { overflow: hidden; border: 1px solid #e1e5e2; border-radius: 22px; box-shadow: 0 24px 60px rgba(15,65,49,.1); }
+.storyVisual img { display: block; width: 100%; height: auto; }
+.storyCopy { padding: 28px 28px 28px 0; }
+.storyCopy h2, .banner h2, .contactCard h2 { margin: 0; font-family: var(--font-manrope), Arial, sans-serif; font-weight: 640; letter-spacing: -.045em; line-height: 1.1; }
+.storyCopy h2 { font-size: clamp(40px, 4vw, 60px); }
+.storyCopy > p:not(.eyebrow) { margin: 22px 0 0; color: #66696b; font-family: var(--font-inter), Arial, sans-serif; font-size: 16px; line-height: 1.7; }
+.storyCopy ul { display: flex; flex-direction: column; gap: 12px; margin: 26px 0 0; padding: 0; list-style: none; color: #0b5c48; font-family: var(--font-inter), Arial, sans-serif; font-size: 16px; font-weight: 600; }
+.storyCopy li::before { margin-right: 10px; content: "✓"; }
+.banner { display: flex; width: min(100% - 48px, 1320px); min-height: 480px; align-items: center; justify-content: space-between; gap: 50px; margin: 0 auto 140px; padding: clamp(45px, 6vw, 86px); border-radius: 34px; background: #0b5c48; color: #fff; }
+.banner .eyebrow { color: #c9ff5c; }
+.banner h2 { max-width: 800px; font-size: clamp(42px, 5vw, 70px); }
+.action { display: inline-flex; min-height: 52px; flex: 0 0 auto; align-items: center; gap: 9px; padding: 0 25px; border-radius: 999px; background: #c9ff5c; color: #0e3d2c; font-family: var(--font-manrope), Arial, sans-serif; font-size: 16px; font-weight: 650; text-decoration: none; }
+.action svg { width: 17px; height: 17px; }
+.contactGrid { display: grid; width: min(100% - 48px, 1320px); grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin: 0 auto 150px; }
+.contactCard { display: flex; min-height: 390px; flex-direction: column; padding: 34px; border: 1px solid #dfe2de; border-radius: 26px; background: #fff; color: inherit; text-decoration: none; transition: transform 200ms ease, box-shadow 200ms ease; }
+.contactCard:hover { transform: translateY(-5px); box-shadow: 0 22px 48px rgba(20,60,47,.1); }
+.contactCard > span { color: #0b5c48; font-family: var(--font-inter), Arial, sans-serif; font-size: 14px; font-weight: 700; }
+.contactCard h2 { margin-top: 42px; font-size: 34px; }
+.contactCard p { margin: 18px 0 0; color: #66696b; font-family: var(--font-inter), Arial, sans-serif; font-size: 16px; line-height: 1.7; }
+.contactCard strong { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; color: #0b5c48; font-family: var(--font-manrope), Arial, sans-serif; font-size: 16px; }
+.contactCard strong svg { width: 16px; height: 16px; }
+@media (max-width: 900px) { .story { grid-template-columns: 1fr; } .storyCopy { padding: 20px 10px; } .banner { flex-direction: column; align-items: flex-start; } .contactGrid { grid-template-columns: 1fr; } .contactCard { min-height: 320px; } }
+@media (max-width: 600px) { .hero, .story, .banner, .contactGrid { width: min(100% - 32px, 520px); } .hero { min-height: auto; padding: 80px 0; } .hero h1 { font-size: clamp(44px, 13vw, 62px); } .story { padding: 16px; } .banner { padding: 42px 24px; } }
+@media (prefers-reduced-motion: reduce) { .contactCard { transition: none; } }

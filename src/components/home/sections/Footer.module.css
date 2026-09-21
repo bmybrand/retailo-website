@@ -42,9 +42,10 @@
   justify-content: center;
   padding-inline: 20px;
   border-radius: 999px;
-  font-family: var(--font-inter), Arial, sans-serif;
+  font-family: var(--font-manrope), Arial, sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 .createAccount { background: #0b5c48; color: #fff; }
